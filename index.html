@@ -57,7 +57,7 @@ function getpixelindex(data, x, y)
 	var g = data[i + 1]
 	var b = data[i + 2];
 	
-	if(r < 128 && b < 128 && g < 128) 
+	if(r < 200 && b < 200 && g < 200) 
 		return -1;
 	
 	var m = Math.max(r, g, b);
