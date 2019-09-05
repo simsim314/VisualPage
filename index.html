@@ -50,7 +50,7 @@ var last = "0";
 var idx = 0;
 var cnt = 0; 
 	
-var myVar = setInterval(intervalTimer, 10);
+var myVar = setInterval(intervalTimer, 50);
 
 function intervalTimer() {
   ctx.drawImage(video,0,0,100,100);
@@ -93,7 +93,7 @@ document.getElementById("p1").innerHTML += last
 if(document.getElementById("p1").innerHTML.length >= 100)
 	document.getElementById("p1").innerHTML += "\n"
 
-  if(cnt % 10 < 5)
+  if(cnt % 4 < 2)
     document.getElementById("div1").style.backgroundColor= "white";
   else
    document.getElementById("div1").style.backgroundColor = "black";
