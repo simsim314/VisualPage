@@ -39,6 +39,11 @@ if (navigator.mediaDevices.getUserMedia) {
   });
 }
 
+function getpixel(data, x, y)
+{
+	var i = 3 * (100 * y + x);
+	return (data[i] + data[i + 1] + data[i + 2]) / 3;
+}
 
 var totals = [0,0,0,0,0];
 var last = "0";
@@ -57,10 +62,11 @@ function intervalTimer() {
   if(cnt % 80 == 0)
     cnt = 0; 
 	
-  for(var i = 0; i < 30000; i+= 100)
-    total += data[i];
-  
-  total /= 300;
+ for(var x = 40; x < 60; x++)
+	for(var y = 40; y < 60; y++)
+  		total += getpixel(data, x, y);
+	
+  total /= 400;
   
   var avg = 0; 
   
