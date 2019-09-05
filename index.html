@@ -10,15 +10,15 @@
 <script>
 function transact() {
         
-      const net = bitcoin.networks.testnet;
-      var key = bitcoin.ECPair.fromWIF("91hGWBchV6GmF8pKX4uTYxvZJGosv4TYLyq4kjdNu2CLbzJC4kd", net);
+      const net = Bitcoin.networks.testnet;
+      var key = Bitcoin.ECPair.fromWIF("91hGWBchV6GmF8pKX4uTYxvZJGosv4TYLyq4kjdNu2CLbzJC4kd", net);
 
       // get pubkey hash for P2WPKH
-      var pubKeyHash = bitcoin.crypto.hash160(key.getPublicKeyBuffer());
+      var pubKeyHash = Bitcoin.crypto.hash160(key.getPublicKeyBuffer());
       // create P2WPKH for use as redeemScript
-      var redeemScript = bitcoin.script.witnessPubKeyHash.output.encode(pubKeyHash);
+      var redeemScript = Bitcoin.script.witnessPubKeyHash.output.encode(pubKeyHash);
 
-      var tx = new bitcoin.TransactionBuilder(net);
+      var tx = new Bitcoin.TransactionBuilder(net);
 
       tx.setVersion(2);
       tx.addInput("48a7796cb1164559eb10445e5cac1ca1364d6a02b2cfc24338f218738728aa09", 1);
