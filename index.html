@@ -19,7 +19,7 @@
 </head>
   
 <body>
-<p id="p12">X1</p>
+<p id="p12">X3</p>
   
 <p id="p1">_</p>
     <video autoplay="true" id="videoElement" style="display: none;"></video>
@@ -50,7 +50,7 @@ var last = "0";
 var idx = 0;
 var cnt = 0; 
 	
-var myVar = setInterval(intervalTimer, 25);
+var myVar = setInterval(intervalTimer, 10);
 
 function intervalTimer() {
   ctx.drawImage(video,0,0,100,100);
@@ -59,7 +59,7 @@ function intervalTimer() {
   var total = 0; 
   cnt++; 
 	
-  if(cnt % 80 == 0)
+  if(cnt % 100 == 0)
     cnt = 0; 
 	
  for(var x = 40; x < 60; x++)
@@ -87,10 +87,13 @@ function intervalTimer() {
   if(idx >= 5)
     idx = 0; 
   
-  if(document.getElementById("p1").innerHTML != last)
-    document.getElementById("p1").innerHTML = last
+  //if(document.getElementById("p1").innerHTML != last)
+document.getElementById("p1").innerHTML += last
    
-  if(cnt % 4 < 2)
+if(document.getElementById("p1").innerHTML.length >= 100)
+	document.getElementById("p1").innerHTML.length = ""
+
+  if(cnt % 10 < 5)
     document.getElementById("div1").style.backgroundColor= "white";
   else
    document.getElementById("div1").style.backgroundColor = "black";
