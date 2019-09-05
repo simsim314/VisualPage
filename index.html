@@ -19,7 +19,7 @@
 </head>
   
 <body>
-<p id="p12">X0</p>
+<p id="p12">X1</p>
   
 <p id="p1">_</p>
     <video autoplay="true" id="videoElement" style="display: none;"></video>
@@ -90,7 +90,7 @@ function intervalTimer() {
   if(document.getElementById("p1").innerHTML != last)
     document.getElementById("p1").innerHTML = last
    
-  if(cnt < 40)
+  if(cnt % 4 < 2)
     document.getElementById("div1").style.backgroundColor= "white";
   else
    document.getElementById("div1").style.backgroundColor = "black";
