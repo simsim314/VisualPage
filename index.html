@@ -6,27 +6,10 @@
 <meta content="What this page is about." name="description">
 <meta content="Display Webcam Stream" name="title">
 <title>Display Webcam Stream</title>
-  
-<style>
-#container {
-    margin: 0px auto;
-    width: 500px;
-    height: 375px;
-    border: 10px #333 solid;
-}
-#videoElement {
-    width: 500px;
-    height: 375px;
-    background-color: #666;
-}
-#canvas {
-  background-color: #666;
-}
-</style>
 </head>
   
 <body>
-    <video autoplay="true" id="videoElement"></video>
+    <video autoplay="true" id="videoElement" visible = false></video>
     <canvas id="canvas" onclick= canvasOnclick()></canvas>
 
 <script>
