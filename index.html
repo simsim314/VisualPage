@@ -19,7 +19,7 @@
 </head>
   
 <body>
-<p id="p12">X8</p>
+<p id="p12">X9</p>
   
 <p id="p1">_</p>
     <video autoplay="true" id="videoElement" style="display: none;"></video>
@@ -41,7 +41,7 @@ if (navigator.mediaDevices.getUserMedia) {
 
 function getpixel(data, x, y)
 {
-	var i = 3 * (100 * y + x);
+	var i = 4 * (100 * y + x);
 	return [data[i], data[i + 1], data[i + 2]];
 }
 
