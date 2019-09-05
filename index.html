@@ -19,7 +19,7 @@
 </head>
   
 <body>
-<p id="p12">X6</p>
+<p id="p12">X7</p>
   
 <p id="p1">_</p>
     <video autoplay="true" id="videoElement" style="display: none;"></video>
@@ -111,7 +111,7 @@ function intervalTimer() {
   var data = ctx.getImageData(0, 0, 100, 100).data;
  idx = getimageindex(data);
 	
-console.log(idx)
+console.log(getpixel(data, 30, 70))
 
 if(last != idx)
 {
