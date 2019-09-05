@@ -19,7 +19,7 @@
 </head>
   
 <body>
-<p id="p12">X8</p>
+<p id="p12">X9</p>
   
 <p id="p1">_</p>
     <video autoplay="true" id="videoElement" style="display: none;"></video>
@@ -43,15 +43,20 @@ if (navigator.mediaDevices.getUserMedia) {
 var totals = [0,0,0,0,0];
 var last = "0";
 var idx = 0;
-  
-var myVar = setInterval(intervalTimer, 50);
+var cnt = 0; 
+	
+var myVar = setInterval(intervalTimer, 25);
 
 function intervalTimer() {
   ctx.drawImage(video,0,0,100,100);
   var data = ctx.getImageData(0, 0, 100, 100).data;
   
   var total = 0; 
-  
+  cnt++; 
+	
+  if(cnt % 80 == 0)
+    cnt = 0; 
+	
   for(var i = 0; i < 30000; i+= 100)
     total += data[i];
   
@@ -79,7 +84,7 @@ function intervalTimer() {
   if(document.getElementById("p1").innerHTML != last)
     document.getElementById("p1").innerHTML = last
    
-  if(idx < 3)
+  if(cnt < 40)
     document.getElementById("div1").style.backgroundColor= "white";
   else
    document.getElementById("div1").style.backgroundColor = "black";
