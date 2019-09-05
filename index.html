@@ -98,6 +98,7 @@ function getimageindex(data)
 
 	}
 	
+	console.log(maxval);
 	return maxid;
 
 }
@@ -115,14 +116,11 @@ function intervalTimer() {
 
 if(last != idx)
 {
-	if(idx == 2)
-		 document.getElementById("p1").innerHTML += "red,"
-
 	if(idx == 0)
-		 document.getElementById("p1").innerHTML += "green,"
+		 document.getElementById("p1").innerHTML += "0"
 
 	if(idx == 1)
-		 document.getElementById("p1").innerHTML += "blue,"
+		 document.getElementById("p1").innerHTML += "1"
 }
 last = idx; 
 	
