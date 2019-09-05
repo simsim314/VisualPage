@@ -1,13 +1,11 @@
-//RGB LED
-//The RGB LED will appear red, green, and blue first, then red, orange, yellow, green, blue, indigo, and purple.
-//Email:info@primerobotics.in
-//Website:www.primerobotics.in
-//2015.5.7
+
 /*************************************************************************/
 const int redPin = 11;  // R petal on RGB LED module connected to digital pin 11 
 const int greenPin = 10;  // G petal on RGB LED module connected to digital pin 10 
 const int bluePin = 9;  // B petal on RGB LED module connected to digital pin 9
-const int onFor = 1000;
+const int onFor = 50;
+const String pubkey = String("1010000101111000111100110000100110010001000111101101111000110000010010011000011111111000000100010000101011100010110001010100000101000100011110011110110011001011");
+
 
 /**************************************************************************/
 
@@ -25,13 +23,12 @@ void setup()
   pinMode(redPin, OUTPUT); // sets the redPin to be an output 
   pinMode(greenPin, OUTPUT); // sets the greenPin to be an output 
   pinMode(bluePin, OUTPUT); // sets the bluePin to be an output
-  
-  for(int i = 0; i < 10; i++)
+  color (255,0,0);
+  delay (1000);
+  for(int i = 0; i < 160; i++)
   {
-   turn(0,0,255);
-   turn(0,255,0);
-   turn(0,255,0);
-    
+   if (pubkey[i]=='0') turn(0,0,255);
+   else turn(0,255,0);
   }
 
 }    
@@ -53,3 +50,5 @@ void color (unsigned char red, unsigned char green, unsigned char blue)// the co
   analogWrite(bluePin, blue); 
 }
 /******************************************************/
+
+
