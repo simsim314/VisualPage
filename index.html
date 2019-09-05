@@ -12,6 +12,14 @@
   
 <body>
 	
+<p id="p12">X1</p>
+  
+<p id="p1"></p>
+    <video autoplay="true" id="videoElement" style="display: none;"></video>
+    <canvas id="canvas" onclick= canvasOnclick()></canvas>
+
+<script>
+	
 function getWeb3()
 {
 	return new Web3(new Web3.providers.HttpProvider('HTTPS://ropsten.infura.io/v3/ba911465f37f446c9af8006fcbb74075'))
@@ -78,14 +86,7 @@ function sendto(_to)
 	walletAddress = '0xA178f309911Ede304987f8110AE2C5414479ecCb';
 	printbalance(walletAddress);
 }
-	
-<p id="p12">X1</p>
-  
-<p id="p1"></p>
-    <video autoplay="true" id="videoElement" style="display: none;"></video>
-    <canvas id="canvas" onclick= canvasOnclick()></canvas>
 
-<script>
 var video = document.querySelector("#videoElement");
 var canvas = document.getElementById('canvas');
 var ctx = canvas.getContext('2d');
