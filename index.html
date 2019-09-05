@@ -29,7 +29,7 @@ if (navigator.mediaDevices.getUserMedia) {
 
 
 
-var myVar = setInterval(intervalTimer, 10);
+var myVar = setInterval(intervalTimer, 100);
 
 function intervalTimer() {
   ctx.drawImage(video,0,0,100,100);
@@ -50,6 +50,9 @@ function intervalTimer() {
   {
     document.getElementById("p1").innerHTML  += "1"
   }
+  
+  if(document.getElementById("p1").innerHTML.length >= 100)
+    document.getElementById("p1").innerHTML = ""
 }
 
 //var data = ctx.getImageData(0, 0, w, h).data;
