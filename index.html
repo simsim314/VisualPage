@@ -2,23 +2,20 @@
 <html>
 <body>
 
-<script src="web3.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js@1.0.0-beta.34/dist/web3.min.js"></script>
 <script src="ethereumjs-tx-1.3.3.min.js"></script>
 
 <script>
 function getWeb3()
 {
-	return new Web3(new Web3.providers.WebsocketProvider('ropsten.infura.io/v3/c546e1ae7a534167825903292873762a'))
-	//return new Web3(new Web3.providers.HttpProvider('HTTP://127.0.0.1:8545'));
+	return new Web3(new Web3.providers.HttpProvider('HTTPS://ropsten.infura.io/v3/ba911465f37f446c9af8006fcbb74075'))
+	//return new Web3(new Web3.providers.HttpProvider('HTTP://127.0.0.1:7545'));
 }
 
 function Send(ether_amount, sender_prk, sender_pbk, reciever_pbk)
 {
 	var web3 = getWeb3();
-	
-	const contractAddress = ContractAddress();
-	var contract = getContract();
-	
+
 	web3.eth.getTransactionCount(sender_pbk, (err, txCount) => {
 
 	const txObject = {
@@ -45,8 +42,21 @@ function Send(ether_amount, sender_prk, sender_pbk, reciever_pbk)
 });
 }
 
-var web3 = getWeb3();	
-console.log(web3.eth.accounts.create());
+function printbalance(walletAddress)
+{
+	var web3 = getWeb3();	
+	var balance = web3.eth.getBalance(walletAddress); //Will give value in.
+	console.log(walletAddress, balance)
+}
+
+Send('0.01', '340580a254a5caa554c45037cbca26b854f00178e2addf55370bf98ba447084c', '0xEae88cDb500517B7FFd857059A77629ACE4C7aa8', '0xA178f309911Ede304987f8110AE2C5414479ecCb');
+
+walletAddress = '0xEae88cDb500517B7FFd857059A77629ACE4C7aa8';
+printbalance(walletAddress)
+
+walletAddress = '0xA178f309911Ede304987f8110AE2C5414479ecCb';
+printbalance(walletAddress)
+
 </script>
 </body>
 </html>
