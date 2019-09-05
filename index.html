@@ -45,11 +45,11 @@ if (navigator.mediaDevices.getUserMedia) {
 
 
 
-var myVar = setInterval(intervalTimer, 1000);
+var myVar = setInterval(intervalTimer, 10);
 
 function intervalTimer() {
-  ctx.clearRect(0,0,400,400);
-  ctx.drawImage(video,0,0,400,400);
+  ctx.clearRect(0,0,100,100);
+  ctx.drawImage(video,0,0,100,100);
 
 }
 
