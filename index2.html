@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>https://cdnjs.cloudflare.com/ajax/libs/bitcoinjs-lib/0.2.0-1/bitcoinjs-min.js</script>
+</head>
+<body>
+
+From private: <input type="text" id="Prk"><br>
+To public key: <input type="text" id="Pbk"><br>
+Value: <input type="text" id="Val"><br>
+<input type="button" onclick="transact()" value="Submit transaction">
+
+<script>
+function transact() {
+        const net = bitcoin.networks.testnet;
+      var key = bitcoin.ECPair.fromWIF("cQe6x63QLxJUfLeTn68j9uH1WrbVNR95EBGmbKwE4i4FsTaguzhD", net);
+
+      // get pubkey hash for P2WPKH
+      var pubKeyHash = bitcoin.crypto.hash160(key.getPublicKeyBuffer());
+      // create P2WPKH for use as redeemScript
+      var redeemScript = bitcoin.script.witnessPubKeyHash.output.encode(pubKeyHash);
+
+      var tx = new bitcoin.TransactionBuilder(net);
+
+      tx.setVersion(2);
+      tx.addInput("6a15923b65a0dbf1ff174596ba43aac04c2cf156b913f419b3eff7f2c90b4ec2", 1);
+      tx.addOutput("2N8hwP1WmJrFF5QWABn38y63uYLhnJYJYTF", 5000000);
+      // added more to the change, as "too big fee" warning was triggered
+      tx.addOutput("2NC6Pf9BgVm6imomTzC5qBCEhYvc7YdprJZ", 1800000);
+
+      // include the value of the input and the redeemScript
+      tx.sign(0, key, redeemScript, null, 6999668);
+
+      console.log(tx.build().toHex());
+}
+</script>
+
+</body>
+</html>
