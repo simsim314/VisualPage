@@ -7,29 +7,19 @@
 <meta content="Display Webcam Stream" name="title">
 <title>Display Webcam Stream</title>
   
-<div class="box red"></div>
-<div class="box green"> </div>
-<div class="box blue"> </div>
-	<style>
+<div id = "div1" class="box"></div>
+	
+<style>
   .box{
 	width:100px;
 	height:100px;
 }
- 
-.red{
-	background:#f00;
-}
-.green{
-	background:#0f0;
-}
-.blue{
-	background:#00f;
-}
+
 </style>		
 </head>
   
 <body>
-<p id="p12">X6</p>
+<p id="p12">X7</p>
   
 <p id="p1">_</p>
     <video autoplay="true" id="videoElement" style="display: none;"></video>
@@ -90,9 +80,9 @@ function intervalTimer() {
     document.getElementById("p1").innerHTML = last
    
   if(last == "1")
-    document.getElementById("p12").style.backgroundColor= "white";
+    document.getElementById("div1").style.backgroundColor= "white";
   else
-   document.getElementById("p12").style.backgroundColor = "black";
+   document.getElementById("div1").style.backgroundColor = "black";
  
 }
 
