@@ -9,7 +9,7 @@
 </head>
   
 <body>
-  <p>Hello</p>
+<p id="p1">_</p>
     <video autoplay="true" id="videoElement" style="display: none;"></video>
     <canvas id="canvas" onclick= canvasOnclick()></canvas>
 
@@ -32,9 +32,24 @@ if (navigator.mediaDevices.getUserMedia) {
 var myVar = setInterval(intervalTimer, 10);
 
 function intervalTimer() {
-  ctx.clearRect(0,0,100,100);
   ctx.drawImage(video,0,0,100,100);
-
+  var data = ctx.getImageData(0, 0, 100, 100).data;
+  
+  var total = 0; 
+  
+  for(var i = 0; i < 30000; i+= 100)
+    total += data[i];
+  
+  total /= 300;
+  
+  if(total < 100)
+  {
+    document.getElementById("p1").innerHTML  += "0"
+  }
+  else
+  {
+    document.getElementById("p1").innerHTML  += "1"
+  }
 }
 
 //var data = ctx.getImageData(0, 0, w, h).data;
