@@ -11,8 +11,8 @@
 	
 <style>
   .box{
-	width:100px;
-	height:100px;
+	width:200px;
+	height:200px;
 }
 
 </style>		
@@ -44,7 +44,7 @@ var totals = [0,0,0,0,0];
 var last = "0";
 var idx = 0;
   
-var myVar = setInterval(intervalTimer, 10);
+var myVar = setInterval(intervalTimer, 50);
 
 function intervalTimer() {
   ctx.drawImage(video,0,0,100,100);
@@ -79,7 +79,7 @@ function intervalTimer() {
   if(document.getElementById("p1").innerHTML != last)
     document.getElementById("p1").innerHTML = last
    
-  if(last == "1")
+  if(idx < 3)
     document.getElementById("div1").style.backgroundColor= "white";
   else
    document.getElementById("div1").style.backgroundColor = "black";
