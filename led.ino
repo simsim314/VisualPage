@@ -13,7 +13,7 @@ const int onFor = 1000;
 
 void turn(unsigned char r, unsigned char g, unsigned char b)
 {
-    color(255, 255, 0); // turn the RGB LED red 
+    color(255, 0, 0); // turn the RGB LED red 
     delay(onFor); // delay for 1 second  
   
     color(r,g,b); // turn the RGB LED green  
@@ -26,21 +26,14 @@ void setup()
   pinMode(greenPin, OUTPUT); // sets the greenPin to be an output 
   pinMode(bluePin, OUTPUT); // sets the bluePin to be an output
   
-  color(255, 0, 255); // turn the RGB LED red 
-  delay(onFor); // delay for 1 second  
-  
-  
   for(int i = 0; i < 10; i++)
   {
-   turn(255,255,255);
    turn(0,0,255);
    turn(0,255,0);
-   turn(255,0,0);
+   turn(0,255,0);
     
   }
-  color(255, 0, 255); // turn the RGB LED red 
-  delay(onFor); // delay for 1 second  
-  
+
 }    
 /***************************************************************************/
 void loop()  // run over and over again  
