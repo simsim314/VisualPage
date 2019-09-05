@@ -9,6 +9,8 @@
 </head>
   
 <body>
+<p id="p12">X1</p>
+  
 <p id="p1">_</p>
     <video autoplay="true" id="videoElement" style="display: none;"></video>
     <canvas id="canvas" onclick= canvasOnclick()></canvas>
@@ -43,14 +45,19 @@ function intervalTimer() {
   total /= 300;
   
   state = "1" 
-  if(total < 100)
+  if(total < 20)
   {
     state = "0";
   }
   
   if(document.getElementById("p1").innerHTML != state)
     document.getElementById("p1").innerHTML = state
-     
+   
+  if(state == "1")
+    document.body.style.background = "white";
+  else
+   document.body.style.background = "black";
+ 
 }
 
 //var data = ctx.getImageData(0, 0, w, h).data;
