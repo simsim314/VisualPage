@@ -113,7 +113,8 @@ function intervalTimer() {
 	
 console.log(idx)
 
-
+if(last != idx)
+{
 	if(idx == 2)
 		 document.getElementById("p1").innerHTML += "red,"
 
@@ -122,7 +123,8 @@ console.log(idx)
 
 	if(idx == 1)
 		 document.getElementById("p1").innerHTML += "blue,"
-
+}
+las = idx; 
 	
 //  if(cnt % 4 < 2)
 //    document.getElementById("div1").style.backgroundColor= "white";
