@@ -111,26 +111,18 @@ function intervalTimer() {
   var data = ctx.getImageData(0, 0, 100, 100).data;
  idx = getimageindex(data);
 	
-	if(idx == 1)
-	{
-		started = true;	
-	}
-	
+console.log(idx)
 
-	if(started && idx != last)
-	{
-		if(idx == 2)
-			 document.getElementById("p1").innerHTML += "red,"
-		
-		if(idx == 0)
-			 document.getElementById("p1").innerHTML += "green,"
-		
-		if(idx == 1)
-			 document.getElementById("p1").innerHTML += "blue,"
-	}
-	   
-	  
-	last = idx; 
+
+	if(idx == 2)
+		 document.getElementById("p1").innerHTML += "red,"
+
+	if(idx == 0)
+		 document.getElementById("p1").innerHTML += "green,"
+
+	if(idx == 1)
+		 document.getElementById("p1").innerHTML += "blue,"
+
 	
 //  if(cnt % 4 < 2)
 //    document.getElementById("div1").style.backgroundColor= "white";
