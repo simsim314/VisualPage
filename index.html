@@ -80,6 +80,9 @@ function getpixelindex(data, x, y)
 	return -1;
 }
 
+var started = false; 
+var last = -1; 
+	
 function getimageindex(data)
 {
 	artotal = [0,0,0,0,0,0];
@@ -119,11 +122,32 @@ function intervalTimer() {
   ctx.drawImage(video,0,0,100,100);
   var data = ctx.getImageData(0, 0, 100, 100).data;
  idx = getimageindex(data);
-	
-	if(idx >= 0)
-		document.getElementById("p1").innerHTML += idx.toString()
-   
 
+	if(last == idx) 
+		return; 
+	
+	if(started && last == 4 && idx != 4)
+	{
+		document.getElementById("p1").innerHTML += idx.toString()
+	}
+	
+	if(started && last != 4 && idx != 4)
+	{
+		if(idx == 5)
+			document.getElementById("p1").innerHTML += "Finish"
+		else
+			document.getElementById("p1").innerHTML += "Fail"
+		
+		started = false; 
+	}
+	
+	if(idx == 5)
+	{	
+		started = true; 
+	}
+	
+	if(started)
+		last = idx;
 //  if(cnt % 4 < 2)
 //    document.getElementById("div1").style.backgroundColor= "white";
 //  else
