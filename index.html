@@ -98,8 +98,10 @@ function getimageindex(data)
 
 	}
 	
-	console.log(maxval);
-	return maxid;
+	if(maxval > 30)
+		return maxid;
+	else
+		retiurn -1; 
 
 }
 
@@ -113,7 +115,9 @@ function intervalTimer() {
  idx = getimageindex(data);
 	
 //console.log(getpixel(data, 30, 70))
-
+if(idx == -1)
+	return; 
+	
 if(last != idx)
 {
 	if(idx == 0)
