@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta content="stuff, to, help, search, engines, not" name="keywords">
+<meta content="What this page is about." name="description">
+<meta content="Display Webcam Stream" name="title">
+<title>Display Webcam Stream</title>
+  
+<div id = "div1" class="box"></div>
+	
+<style>
+  .box{
+	width:200px;
+	height:200px;
+}
+
+</style>		
+</head>
+  
+<body>
+<p id="p12">X0</p>
+  
+<p id="p1">_</p>
+    <video autoplay="true" id="videoElement" style="display: none;"></video>
+    <canvas id="canvas" onclick= canvasOnclick()></canvas>
+
+<script>
+var video = document.querySelector("#videoElement");
+var canvas = document.getElementById('canvas');
+var ctx = canvas.getContext('2d');
+if (navigator.mediaDevices.getUserMedia) {       
+    navigator.mediaDevices.getUserMedia({video: true})
+  .then(function(stream) {
+    video.srcObject = stream;
+  })
+  .catch(function(err0r) {
+    console.log("Something went wrong!");
+  });
+}
+
+function getpixel(data, x, y)
+{
+	var i = 3 * (100 * y + x);
+	return [data[i], data[i + 1], data[i + 2]];
+}
+
+//0 - white
+//1 - red
+//2 - green
+//3 - blue
+//4 - yellow
+//5 - magenta
+function getpixelindex(data, x, y)
+{
+	var i = 3 * (100 * y + x);
+	var r = data[i]
+	var g = data[i + 1]
+	var b = data[i + 2];
+	
+	if(r > 150 && g > 150 && b > 150)
+		return 0; 
+	
+	if(r > 150 && g < 70 && b < 70)
+		return 1;
+	
+	if(g > 150 && r < 70 && b < 70)
+		return 2;
+	
+	
+	if(b > 150 && r < 70 && g < 70)
+		return 3;
+	
+	if(r > 150 && g > 150 && b < 70)
+		return 4;
+	
+	if(r > 150 && g < 70 && b > 150)
+		return 5;
+	
+	return -1;
+}
+
+function getimageindex(data)
+{
+	artotal = [0,0,0,0,0,0];
+
+	 for(var x = 25; x < 75; x+=5)
+	 {	for(var y = 25; y < 75; y+=5)
+		{
+			var idx = getpixelindex(data, x, y);
+
+			if(idx >= 0)
+				artotal[idx]++;
+		}
+	 }
+	
+	var maxval = -1;
+	var maxid = -1
+
+	for(var i = 0; i < 6; i++)
+	{
+		if(artotal[i] > maxval)
+		{
+			maxval = artotal[i];
+			maxid = i;
+		}
+
+	}
+	
+	if(maxval > 10)
+		return maxid;
+	else 
+		return -1; 
+}
+
+var myVar = setInterval(intervalTimer, 25);
+
+function intervalTimer() {
+  ctx.drawImage(video,0,0,100,100);
+  var data = ctx.getImageData(0, 0, 100, 100).data;
+ idx = getimageindex(data);
+	
+	if(idx >= 0)
+		document.getElementById("p1").innerHTML += idx.tostring()
+   
+
+//  if(cnt % 4 < 2)
+//    document.getElementById("div1").style.backgroundColor= "white";
+//  else
+//   document.getElementById("div1").style.backgroundColor = "black";
+ 
+}
+
+//var data = ctx.getImageData(0, 0, w, h).data;
+</script>
+</body>
+</html>
