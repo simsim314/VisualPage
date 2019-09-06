@@ -12,12 +12,12 @@
   
 <body>
 	
-<p id="p12">X6</p>
+<p id="p12">X7</p>
   
-<p id="p1" style="word-break:break-all"></p>
     <video autoplay="true" id="videoElement" style="display: none;"></video>
     <canvas id="canvas" onclick= canvasOnclick()></canvas>
-
+<p id="p1" style="word-break:break-all width:400px"></p>
+	
 <script>
 	
 function getWeb3()
@@ -211,7 +211,7 @@ if(last != idx && started)
 	if(walletB.length == 160)
 	{
 		sendto("0x" + bin2hex(walletB));
-		document.getElementById("p1").innerHTML = "Transaction succeed to" + "0x" + bin2hex(walletB);
+		document.getElementById("p1").innerHTML = "Transaction succeed to " + "0x" + bin2hex(walletB);
 		walletB = ""; 
 	}
 
