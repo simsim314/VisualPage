@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<p id="i1"></p>
+<script src="bitcoinjs-lib-4.0.2.js">
+ </script>
+</head>
+<body>
+input <input type="text" id="input" ><br>
+input flag <input type="text" id="inputflag" ><br>
+send val <input type="text" id="sendval" ><br>
+change val <input type="text" id="changeval" ><br>
+
+<input type="button" onclick="transact()" value="Get transaction">
+
+<script>
+function transact() {
+        
+      const net = bitcoin.networks.testnet;
+      var key = bitcoin.ECPair.fromWIF("91hGWBchV6GmF8pKX4uTYxvZJGosv4TYLyq4kjdNu2CLbzJC4kd", net);
+
+      var tx = new bitcoin.TransactionBuilder(net);
+
+      tx.setVersion(2);
+	  
+	  console.log(document.getElementById("input").value);
+	  console.log(document.getElementById("inputflag").value);
+	  console.log(document.getElementById("sendval").value);
+	  console.log(document.getElementById("changeval").value);
+	  
+      tx.addInput(document.getElementById("input").value, parseInt(document.getElementById("inputflag").value));
+      tx.addOutput("n4m8CqeNnKiZT2jcHftHrgWev8jG2zcJuU", parseInt(document.getElementById("sendval").value));
+      tx.addOutput("mjDafMnFNoe24bu2r13Qjv9Ffd1QJb9rBi", parseInt(document.getElementById("changeval").value));
+
+      // include the value of the input and the redeemScript
+      tx.sign(0, key);
+	  
+
+		result = tx.build()
+		
+		// Calculate Transaction ID
+		//var txid = bitcoin.bufferutils.reverse(result.getHash()).toString('hex')
+   
+		document.getElementById("i1").innerHTML = result.toHex(); 
+
+	//fetch('https://blockstream.info/testnet/api/tx', {
+    //    method: 'POST',
+    //    mode: 'cors',
+    //    body: txstr,
+    //})
+    //.then(resp => resp.ok || Promise.reject('cannot send tx'))
+	//.catch(console.error)
+}
+
+</script>
+
+</body>
+</html>
