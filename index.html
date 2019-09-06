@@ -174,10 +174,11 @@ function getimageindex(data)
 var myVar = setInterval(intervalTimer, 10);
 var started = false; 
 var last = -1; 
+d = 250;
 	
 function intervalTimer() {
-  ctx.drawImage(video,0,0,100,100);
-  var data = ctx.getImageData(0, 0, 100, 100).data;
+  ctx.drawImage(video,0,0,d,d);
+  var data = ctx.getImageData(0, 0, d, d).data;
  idx = getimageindex(data);
 	
 //console.log(getpixel(data, 30, 70))
