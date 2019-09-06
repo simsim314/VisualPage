@@ -82,6 +82,8 @@ function transfer()
 {
 	sendto("0x" + bin2hex(walletB));
 	walletB = ""; 
+	document.getElementById("trbtn").disabled = true;
+
 }
 	
 function sendto(_to)
