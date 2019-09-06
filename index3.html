@@ -29,13 +29,16 @@ function intervalTimer() {
   
   cnt++; 
 	
-  if(cnt % 10 == 0)
+  if(cnt % 30 == 0)
     cnt = 0; 	
    
-  if(cnt < 5)
-    document.getElementById("div1").style.backgroundColor= "red";
-  else
+  if(cnt < 20)
+   document.getElementById("div1").style.backgroundColor= "red";
+  else if (cnt < 10)
    document.getElementById("div1").style.backgroundColor = "green";
+  else
+   document.getElementById("div1").style.backgroundColor = "blue";
+
  
 }
 //var data = ctx.getImageData(0, 0, w, h).data;
