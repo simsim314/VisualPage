@@ -18,24 +18,25 @@
 </head>
   
 <body>
-<p id="p12">X13</p>  
+<p id="p12">X12</p>  
 <p id="p1">_</p>
 
 <script>
-
 var cnt = 0; 
 var myVar = setInterval(intervalTimer, 20);
 function intervalTimer() {
   
   cnt++; 
 	
-  if(cnt % 20 == 0)
+  if(cnt % 30 == 0)
     cnt = 0; 	
    
-  if(cnt < 10)
+  if(cnt < 20)
    document.getElementById("div1").style.backgroundColor= "red";
-  else 
+  else if (cnt < 10)
    document.getElementById("div1").style.backgroundColor = "green";
+  else
+   document.getElementById("div1").style.backgroundColor = "blue";
  
 }
 //var data = ctx.getImageData(0, 0, w, h).data;
