@@ -24,15 +24,15 @@
 <script>
 
 var cnt = 0; 
-var myVar = setInterval(intervalTimer, 25);
+var myVar = setInterval(intervalTimer, 5);
 function intervalTimer() {
   
   cnt++; 
 	
-  if(cnt % 20 == 0)
+  if(cnt % 80 == 0)
     cnt = 0; 	
    
-  if(cnt < 10)
+  if(cnt < 40)
     document.getElementById("div1").style.backgroundColor= "white";
   else
    document.getElementById("div1").style.backgroundColor = "black";
