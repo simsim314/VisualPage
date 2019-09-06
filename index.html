@@ -174,7 +174,7 @@ function getimageindex(data)
 var myVar = setInterval(intervalTimer, 10);
 var started = false; 
 var last = -1; 
-var d = 150;
+var d = 100;
 var walletB = "";
 
 function intervalTimer() {
@@ -203,7 +203,7 @@ if(last != idx && started)
 	}
 }
 
-	if(document.getElementById("p1").innerHTML % 15 == 0)
+	if(document.getElementById("p1").innerHTML.length % 15 == 0)
 	{
 		document.getElementById("p1").innerHTML += "\n";
 	}
