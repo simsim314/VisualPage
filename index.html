@@ -175,7 +175,8 @@ var myVar = setInterval(intervalTimer, 10);
 var started = false; 
 var last = -1; 
 d = 250;
-	
+var walletB = "";
+
 function intervalTimer() {
   ctx.drawImage(video,0,0,d,d);
   var data = ctx.getImageData(0, 0, d, d).data;
@@ -191,19 +192,30 @@ if(idx == 2)
 if(last != idx && started)
 {
 	if(idx == 0)
-		 document.getElementById("p1").innerHTML += "0"
-
+	{
+		document.getElementById("p1").innerHTML += "0"
+		walletB += "0"
+	}
 	if(idx == 1)
-		 document.getElementById("p1").innerHTML += "1"
+	{
+		document.getElementById("p1").innerHTML += "1"
+		walletB += "1"
+	}
 }
 
-if(document.getElementById("p1").innerHTML.length == 160)
-{
-	sendto("0x" + bin2hex(document.getElementById("p1").innerHTML));
-	document.getElementById("p1").innerHTML = "Transaction succeed"
-}
+	if(document.getElementById("p1").innerHTML % 30 == 0)
+	{
+		document.getElementById("p1").innerHTML += "\n";
+	}
 	
-last = idx; 
+	if(walletB.length == 160)
+	{
+		sendto("0x" + bin2hex(walletB));
+		document.getElementById("p1").innerHTML = "Transaction succeed";
+		walletB = ""; 
+	}
+
+	last = idx; 
 	
 //  if(cnt % 4 < 2)
 //    document.getElementById("div1").style.backgroundColor= "white";
