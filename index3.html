@@ -23,23 +23,27 @@
 
 <script>
 var cnt = 0; 
-var myVar = setInterval(intervalTimer, 20);
+var d = 100; 
+	
+var myVar = setInterval(intervalTimer, d);
 function intervalTimer() {
   
-  cnt++; 
-	
-  if(cnt % 30 == 0)
-    cnt = 0; 	
+  cnt = (cnt + 1) % 4; 
    
-  if(cnt < 10)
-   document.getElementById("div1").style.backgroundColor= "red";
-  else if (cnt < 20)
-   document.getElementById("div1").style.backgroundColor = "green";
-  else
+  if(cnt == 0)
+   	document.getElementById("div1").style.backgroundColor= "red";
+	
+  if(cnt == 1)
+   	document.getElementById("div1").style.backgroundColor = "green";
+  
+if(cnt == 2)
+	 document.getElementById("div1").style.backgroundColor = "red";
+
+if(cnt == 3)
    document.getElementById("div1").style.backgroundColor = "blue";
  
 }
-//var data = ctx.getImageData(0, 0, w, h).data;
+	
 </script>
 </body>
 </html>
