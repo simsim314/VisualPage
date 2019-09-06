@@ -15,7 +15,7 @@
     <canvas id="canvas" onclick= canvasOnclick() style="width:300px"></canvas>
 <p id="p1" style="word-break:break-all"></p>
 <input type="button" onclick="values()" value="Values">
-<p id="p12">X4</p>
+<p id="p12">X5</p>
 <input type="button" id = "trbtn" onclick="transfer()" value="Transfer">
   	
 <script>
@@ -73,7 +73,7 @@ function values()
 	
 	var walletAddress1 = '0xA178f309911Ede304987f8110AE2C5414479ecCb';
 	web3.eth.getBalance(walletAddress1).then((balance1) => {
-		document.getElementById("p12").innerHTML = (balance / 1000000000000000).toString() + "," + (balance1/1000000000000000).toString();
+		document.getElementById("p12").innerHTML = "From: " + (balance / 1000000000000000).toString() + " , To: " + (balance1/1000000000000000).toString();
 		
 	});
 	});
@@ -217,7 +217,6 @@ if(last != idx && started)
 	{
 		started = false;
 		document.getElementById("trbtn").disabled = false;
-
 		document.getElementById("p1").innerHTML = "Do you want transfer to " + "0x" + bin2hex(walletB);
 		
 
