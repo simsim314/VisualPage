@@ -9,15 +9,18 @@ uint16_t ambient_light = 0;
 uint16_t red_light = 0;
 uint16_t green_light = 0;
 uint16_t blue_light = 0;
-Vector<int> colors;
-bool started = false; 
+
+int red_counts[1000];
 
 #include <Adafruit_NeoPixel.h>
 
 Adafruit_NeoPixel strip(12, 16, NEO_GRB + NEO_KHZ800); 
 
 void setup() {
-
+  
+  for(int i = 0; i < 1000; i++)
+    red_counts[i] = 0; 
+  
   // Initialize Serial port
   Serial.begin(9600);
   apds.init();
@@ -30,15 +33,6 @@ void setup() {
   strip.begin();
 }
 
-int countval(int val)
-{
-  int count = 0; 
-  for(int i = 0; i < colors.size(); i++)
-    if(colors[i] == val)
-      count++; 
-
-     return count; 
-}
 void loop() {
   
   // Read the light levels (ambient, red, green, blue)
@@ -52,17 +46,14 @@ void loop() {
  //   Serial.print(ambient_light);
 
  //if(started == false)
- {
-   if(colors[colors.size() - 1] != red_light)
-      colors.push_back(red_light); 
-
-   if(countval(red_light) >= 5)
+ 
+   red_counts[red_light]++;
+ 
+   if(red_counts[red_light] > 5)
    {
-      Serial.print(" Repeat: ");
-      Serial.println(red_light);
-      started = true; 
+      Serial.print(" Repeat 5: ");
+      Serial.print(red_light);
    }
- }
  
     Serial.print(" Red: ");
     Serial.print(red_light);
