@@ -61,13 +61,20 @@ void loop() {
 	red_counts[red_light]++;
 	last = red_light;
    }
-	  
-   if(red_light > 0 && (red_counts[red_light] + red_counts[red_light + 1] + red_counts[red_light - 1]) > 8)
+
+   if(red_light > 5)
    {
-      Serial.print(" Repeat 8: ");
-      Serial.print(red_light);
+	   int total = 0; 
+	   int gate = 3; 
+	   for(int j = -gate; j <= gate; j++)
+		total += red_counts[red_light + j]
+
+	   if(red_light > 0 && total >= 7)
+	   {
+	      Serial.print(" Repeat 8: ");
+	      Serial.print(red_light);
+	   }
    }
- 
     Serial.print(" Red: ");
     Serial.print(red_light);
     Serial.print(" Green: ");
