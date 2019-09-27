@@ -51,7 +51,7 @@ void loop() {
  //   Serial.print("Ambient: ");
  //   Serial.print(ambient_light);
 
- if(started == false)
+ //if(started == false)
  {
    if(colors[colors.size() - 1] != red_light)
       colors.push_back(red_light); 
