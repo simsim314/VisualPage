@@ -10,6 +10,7 @@ uint16_t blue_light = 0;
 
 int red_counts[250];
 int last = 0; 
+int count = 0; 
 
 #include <Adafruit_NeoPixel.h>
 
@@ -45,7 +46,16 @@ void loop() {
  //   Serial.print(ambient_light);
 
  //if(started == false)
- 
+   count++; 
+   
+   if(count >= 40)
+   {
+	for(int i = 0; i < 250; i++)
+  		red_counts[i] = 0; 
+    
+	count = 0;
+   }
+	  
    if(red_light < 250 && last != red_light)
    {
 	red_counts[red_light]++;
