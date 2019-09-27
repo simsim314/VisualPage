@@ -1,7 +1,5 @@
 #include <Wire.h>
 #include <SparkFun_APDS9960.h>
-#include <Vector.h> 
-
 
 SparkFun_APDS9960 apds = SparkFun_APDS9960();
 
