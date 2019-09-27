@@ -62,9 +62,9 @@ void loop() {
 	last = red_light;
    }
 	  
-   if(red_counts[red_light] > 5)
+   if(red_light > 0 && (red_counts[red_light] + red_counts[red_light + 1] + red_counts[red_light - 1]) > 8)
    {
-      Serial.print(" Repeat 5: ");
+      Serial.print(" Repeat 8: ");
       Serial.print(red_light);
    }
  
