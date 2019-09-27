@@ -8,7 +8,7 @@ uint16_t red_light = 0;
 uint16_t green_light = 0;
 uint16_t blue_light = 0;
 
-int red_counts[1000];
+int red_counts[250];
 
 #include <Adafruit_NeoPixel.h>
 
@@ -16,7 +16,7 @@ Adafruit_NeoPixel strip(12, 16, NEO_GRB + NEO_KHZ800);
 
 void setup() {
   
-  for(int i = 0; i < 1000; i++)
+  for(int i = 0; i < 250; i++)
     red_counts[i] = 0; 
   
   // Initialize Serial port
@@ -45,7 +45,8 @@ void loop() {
 
  //if(started == false)
  
-   red_counts[red_light]++;
+   if(red_light < 250)
+	red_counts[red_light]++;
  
    if(red_counts[red_light] > 5)
    {
